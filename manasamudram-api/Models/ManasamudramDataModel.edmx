@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HouseHoldTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="App_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HouseHoldTest.dbo.EndScanning' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EndScanning">
+          <Property Name="StartScanning" Type="bit" />
+          <Property Name="Endscanning" Type="bit" />
+          <Property Name="DriveName" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Tripcount" Type="int" />
+        </EntityType>-->
+        <EntityType Name="HouseHold">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QRUniqueID" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="District" Type="nvarchar(max)" />
+          <Property Name="NumberOfPersons" Type="nvarchar(max)" />
+          <Property Name="DOORNo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MicRecording">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleId" Type="int" />
+          <Property Name="DateTimeRecorded" Type="datetime" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="RecordedData" Type="varbinary(max)" />
+          <Property Name="LengthOfAudio" Type="int" />
+        </EntityType>
+        <EntityType Name="QR">
+          <Key>
+            <PropertyRef Name="UniqueID" />
+          </Key>
+          <Property Name="UniqueID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QRData" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HouseHoldTest.dbo.Startsacnning' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Startsacnning">
+          <Property Name="Startscanning" Type="bit" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Drivename" Type="nvarchar(max)" />
+        </EntityType>-->
+        <EntityType Name="TotalDryWastage">
+          <Key>
+            <PropertyRef Name="DryWastageId" />
+          </Key>
+          <Property Name="DryWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="DryWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteReceived" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteProcessed" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="int" />
+        </EntityType>
+        <EntityType Name="TotalHHwastage">
+          <Key>
+            <PropertyRef Name="HHWastageId" />
+          </Key>
+          <Property Name="HHWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="HHWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalHHHSafelyDisposed" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="int" />
+        </EntityType>
+        <EntityType Name="TotalMixedWastage">
+          <Key>
+            <PropertyRef Name="MixedWastageId" />
+          </Key>
+          <Property Name="MixedWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="MixedWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="TotalMixedWasteDisposed" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MixedWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="int" />
+        </EntityType>
+        <EntityType Name="TotalWetWastage">
+          <Key>
+            <PropertyRef Name="WetWastageId" />
+          </Key>
+          <Property Name="WetWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="WetWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteReceived" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteProcessed" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HouseHoldTest.dbo.Trips' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Trips">
+          <Key>
+            <PropertyRef Name="NoOfTrips" />
+          </Key>
+          <Property Name="DateandTime" Type="date" />
+          <Property Name="NoOfTrips" Type="int" Nullable="false" />
+          <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoofWorkers" Type="int" />
+          <Property Name="DriveName" Type="nvarchar(max)" />
+          <Property Name="CountTrueOrFalse" Type="bit" />
+        </EntityType>
+        <EntityType Name="VehiclesForMic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VehicleName" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WastageConfirmation">
+          <Key>
+            <PropertyRef Name="WastageConfirmationId" />
+          </Key>
+          <Property Name="WastageConfirmationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="DriverName" Type="nvarchar(max)" />
+          <Property Name="HouseId" Type="int" />
+          <Property Name="ServiceGiven" Type="bit" />
+          <Property Name="IsScannestatus" Type="bit" />
+          <Property Name="Trip" Type="int" />
+        </EntityType>
+        <EntityType Name="WastageInfo">
+          <Key>
+            <PropertyRef Name="wastageid" />
+          </Key>
+          <Property Name="wastageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverName" Type="nvarchar(max)" />
+          <Property Name="WetWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="HHWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="MixedWasteCollected" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DateTimeWasteLogged" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__MicRecord__Vehic__1ED998B2">
+          <End Role="VehiclesForMic" Type="Self.VehiclesForMic" Multiplicity="0..1" />
+          <End Role="MicRecording" Type="Self.MicRecording" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesForMic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MicRecording">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HouseHoldTestModelStoreContainer">
+          <EntitySet Name="App_Users" EntityType="Self.App_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HouseHold" EntityType="Self.HouseHold" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MicRecording" EntityType="Self.MicRecording" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QR" EntityType="Self.QR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalDryWastage" EntityType="Self.TotalDryWastage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalHHwastage" EntityType="Self.TotalHHwastage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalMixedWastage" EntityType="Self.TotalMixedWastage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalWetWastage" EntityType="Self.TotalWetWastage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehiclesForMic" EntityType="Self.VehiclesForMic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WastageConfirmation" EntityType="Self.WastageConfirmation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WastageInfo" EntityType="Self.WastageInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trips" EntityType="Self.Trips" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Trips].[DateandTime] AS [DateandTime], 
+    [Trips].[NoOfTrips] AS [NoOfTrips], 
+    [Trips].[VehicleNumber] AS [VehicleNumber], 
+    [Trips].[NoofWorkers] AS [NoofWorkers], 
+    [Trips].[DriveName] AS [DriveName], 
+    [Trips].[CountTrueOrFalse] AS [CountTrueOrFalse]
+    FROM [dbo].[Trips] AS [Trips]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__MicRecord__Vehic__1ED998B2" Association="Self.FK__MicRecord__Vehic__1ED998B2">
+            <End Role="VehiclesForMic" EntitySet="VehiclesForMic" />
+            <End Role="MicRecording" EntitySet="MicRecording" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HouseHoldTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="App_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HouseHold">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QRUniqueID" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfPersons" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOORNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MicRecording">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleId" Type="Int32" />
+          <Property Name="DateTimeRecorded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="RecordedData" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LengthOfAudio" Type="Int32" />
+          <NavigationProperty Name="VehiclesForMic" Relationship="Self.FK__MicRecord__Vehic__1ED998B2" FromRole="MicRecording" ToRole="VehiclesForMic" />
+        </EntityType>
+        <EntityType Name="QR">
+          <Key>
+            <PropertyRef Name="UniqueID" />
+          </Key>
+          <Property Name="UniqueID" Type="Guid" Nullable="false" />
+          <Property Name="QRData" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TotalDryWastage">
+          <Key>
+            <PropertyRef Name="DryWastageId" />
+          </Key>
+          <Property Name="DryWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="DryWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteReceived" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteProcessed" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TotalHHwastage">
+          <Key>
+            <PropertyRef Name="HHWastageId" />
+          </Key>
+          <Property Name="HHWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="HHWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalHHHSafelyDisposed" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TotalMixedWastage">
+          <Key>
+            <PropertyRef Name="MixedWastageId" />
+          </Key>
+          <Property Name="MixedWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="MixedWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="TotalMixedWasteDisposed" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MixedWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TotalWetWastage">
+          <Key>
+            <PropertyRef Name="WetWastageId" />
+          </Key>
+          <Property Name="WetWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <Property Name="WetWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteReceived" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteProcessed" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="WetWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HousesCollected" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VehiclesForMic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VehicleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MicRecordings" Relationship="Self.FK__MicRecord__Vehic__1ED998B2" FromRole="VehiclesForMic" ToRole="MicRecording" />
+        </EntityType>
+        <EntityType Name="WastageConfirmation">
+          <Key>
+            <PropertyRef Name="WastageConfirmationId" />
+          </Key>
+          <Property Name="WastageConfirmationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DriverName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HouseId" Type="Int32" />
+          <Property Name="ServiceGiven" Type="Boolean" />
+          <Property Name="IsScannestatus" Type="Boolean" />
+          <Property Name="Trip" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WastageInfo">
+          <Key>
+            <PropertyRef Name="wastageid" />
+          </Key>
+          <Property Name="wastageid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WetWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DryWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="HHWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="MixedWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DateTimeWasteLogged" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="NoOfTrips" />
+          </Key>
+          <Property Name="DateandTime" Type="DateTime" Precision="0" />
+          <Property Name="NoOfTrips" Type="Int32" Nullable="false" />
+          <Property Name="VehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoofWorkers" Type="Int32" />
+          <Property Name="DriveName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountTrueOrFalse" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK__MicRecord__Vehic__1ED998B2">
+          <End Role="VehiclesForMic" Type="Self.VehiclesForMic" Multiplicity="0..1" />
+          <End Role="MicRecording" Type="Self.MicRecording" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehiclesForMic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MicRecording">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ManasamudramEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="App_Users" EntityType="Self.App_Users" />
+          <EntitySet Name="HouseHolds" EntityType="Self.HouseHold" />
+          <EntitySet Name="MicRecordings" EntityType="Self.MicRecording" />
+          <EntitySet Name="QRs" EntityType="Self.QR" />
+          <EntitySet Name="TotalDryWastages" EntityType="Self.TotalDryWastage" />
+          <EntitySet Name="TotalHHwastages" EntityType="Self.TotalHHwastage" />
+          <EntitySet Name="TotalMixedWastages" EntityType="Self.TotalMixedWastage" />
+          <EntitySet Name="TotalWetWastages" EntityType="Self.TotalWetWastage" />
+          <EntitySet Name="VehiclesForMics" EntityType="Self.VehiclesForMic" />
+          <EntitySet Name="WastageConfirmations" EntityType="Self.WastageConfirmation" />
+          <EntitySet Name="WastageInfoes" EntityType="Self.WastageInfo" />
+          <EntitySet Name="Trips" EntityType="Self.Trip" />
+          <AssociationSet Name="FK__MicRecord__Vehic__1ED998B2" Association="Self.FK__MicRecord__Vehic__1ED998B2">
+            <End Role="VehiclesForMic" EntitySet="VehiclesForMics" />
+            <End Role="MicRecording" EntitySet="MicRecordings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HouseHoldTestModelStoreContainer" CdmEntityContainer="ManasamudramEntities">
+          <EntitySetMapping Name="App_Users">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.App_Users">
+              <MappingFragment StoreEntitySet="App_Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HouseHolds">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.HouseHold">
+              <MappingFragment StoreEntitySet="HouseHold">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QRUniqueID" ColumnName="QRUniqueID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="NumberOfPersons" ColumnName="NumberOfPersons" />
+                <ScalarProperty Name="DOORNo" ColumnName="DOORNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MicRecordings">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.MicRecording">
+              <MappingFragment StoreEntitySet="MicRecording">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+                <ScalarProperty Name="DateTimeRecorded" ColumnName="DateTimeRecorded" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="RecordedData" ColumnName="RecordedData" />
+                <ScalarProperty Name="LengthOfAudio" ColumnName="LengthOfAudio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QRs">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.QR">
+              <MappingFragment StoreEntitySet="QR">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+                <ScalarProperty Name="QRData" ColumnName="QRData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalDryWastages">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.TotalDryWastage">
+              <MappingFragment StoreEntitySet="TotalDryWastage">
+                <ScalarProperty Name="DryWastageId" ColumnName="DryWastageId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="DryWasteCollected" ColumnName="DryWasteCollected" />
+                <ScalarProperty Name="DryWasteReceived" ColumnName="DryWasteReceived" />
+                <ScalarProperty Name="DryWasteProcessed" ColumnName="DryWasteProcessed" />
+                <ScalarProperty Name="DryWasteRecovery" ColumnName="DryWasteRecovery" />
+                <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalHHwastages">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.TotalHHwastage">
+              <MappingFragment StoreEntitySet="TotalHHwastage">
+                <ScalarProperty Name="HHWastageId" ColumnName="HHWastageId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="HHWasteCollected" ColumnName="HHWasteCollected" />
+                <ScalarProperty Name="TotalHHHSafelyDisposed" ColumnName="TotalHHHSafelyDisposed" />
+                <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalMixedWastages">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.TotalMixedWastage">
+              <MappingFragment StoreEntitySet="TotalMixedWastage">
+                <ScalarProperty Name="MixedWastageId" ColumnName="MixedWastageId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="MixedWasteCollected" ColumnName="MixedWasteCollected" />
+                <ScalarProperty Name="TotalMixedWasteDisposed" ColumnName="TotalMixedWasteDisposed" />
+                <ScalarProperty Name="MixedWasteRecovery" ColumnName="MixedWasteRecovery" />
+                <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalWetWastages">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.TotalWetWastage">
+              <MappingFragment StoreEntitySet="TotalWetWastage">
+                <ScalarProperty Name="WetWastageId" ColumnName="WetWastageId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="WetWasteCollected" ColumnName="WetWasteCollected" />
+                <ScalarProperty Name="WetWasteReceived" ColumnName="WetWasteReceived" />
+                <ScalarProperty Name="WetWasteProcessed" ColumnName="WetWasteProcessed" />
+                <ScalarProperty Name="WetWasteRecovery" ColumnName="WetWasteRecovery" />
+                <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehiclesForMics">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.VehiclesForMic">
+              <MappingFragment StoreEntitySet="VehiclesForMic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WastageConfirmations">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.WastageConfirmation">
+              <MappingFragment StoreEntitySet="WastageConfirmation">
+                <ScalarProperty Name="WastageConfirmationId" ColumnName="WastageConfirmationId" />
+                <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="ServiceGiven" ColumnName="ServiceGiven" />
+                <ScalarProperty Name="IsScannestatus" ColumnName="IsScannestatus" />
+                <ScalarProperty Name="Trip" ColumnName="Trip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WastageInfoes">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.WastageInfo">
+              <MappingFragment StoreEntitySet="WastageInfo">
+                <ScalarProperty Name="wastageid" ColumnName="wastageid" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="WetWasteCollected" ColumnName="WetWasteCollected" />
+                <ScalarProperty Name="DryWasteCollected" ColumnName="DryWasteCollected" />
+                <ScalarProperty Name="HHWasteCollected" ColumnName="HHWasteCollected" />
+                <ScalarProperty Name="MixedWasteCollected" ColumnName="MixedWasteCollected" />
+                <ScalarProperty Name="DateTimeWasteLogged" ColumnName="DateTimeWasteLogged" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trips">
+            <EntityTypeMapping TypeName="HouseHoldTestModel.Trip">
+              <MappingFragment StoreEntitySet="Trips">
+                <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+                <ScalarProperty Name="NoOfTrips" ColumnName="NoOfTrips" />
+                <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+                <ScalarProperty Name="NoofWorkers" ColumnName="NoofWorkers" />
+                <ScalarProperty Name="DriveName" ColumnName="DriveName" />
+                <ScalarProperty Name="CountTrueOrFalse" ColumnName="CountTrueOrFalse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
