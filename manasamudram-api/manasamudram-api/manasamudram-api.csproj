@@ -317,9 +317,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{cf2ae673-4a9b-46dd-8931-25193498236e}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{F726DF49-B48C-4616-A532-7CEC1D9AD737}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryADO\RepositoryADO.csproj">
+      <Project>{0cfb0fa6-a886-4aef-8755-145c18ce563b}</Project>
+      <Name>RepositoryADO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

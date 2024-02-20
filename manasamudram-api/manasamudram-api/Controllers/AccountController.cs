@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Models;
+using RepositoryADO;
 
 namespace manasamudram_api.Controllers
 {
@@ -23,13 +24,14 @@ namespace manasamudram_api.Controllers
                 if (newUser == null)
                     return BadRequest("Invalid data");
 
-                
-                if (dbContext.App_Users.Any(u => u.UserName == newUser.UserName))
-                    return Conflict(); 
+
+                UserAccountOperations ua= new UserAccountOperations();
+                if (ua.UserExists(newUser))
+                    return Conflict();
+
 
                 
-                dbContext.App_Users.Add(newUser);
-                dbContext.SaveChanges();
+               
 
                 return Ok("Registration successful");
             }

@@ -1,0 +1,12 @@
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\RepositoryADO.dll.config
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\RepositoryADO.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\RepositoryADO.pdb
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\EntityFramework.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\EntityFramework.SqlServer.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\Models.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\Models.pdb
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\EntityFramework.xml
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Debug\EntityFramework.SqlServer.xml
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Debug\RepositoryADO.csprojResolveAssemblyReference.cache
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Debug\RepositoryADO.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Debug\RepositoryADO.pdb

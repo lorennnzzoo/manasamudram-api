@@ -1,0 +1,5 @@
+D:\dharma\manasamudram-api\manasamudram-api\Business\bin\Debug\Business.dll
+D:\dharma\manasamudram-api\manasamudram-api\Business\bin\Debug\Business.pdb
+D:\dharma\manasamudram-api\manasamudram-api\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
+D:\dharma\manasamudram-api\manasamudram-api\Business\obj\Debug\Business.dll
+D:\dharma\manasamudram-api\manasamudram-api\Business\obj\Debug\Business.pdb

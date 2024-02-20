@@ -90,3 +90,7 @@ D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\System.Web.Http
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\obj\Debug\manasamudram-api.csprojResolveAssemblyReference.cache
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\obj\Debug\manasamudram-api.dll
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\obj\Debug\manasamudram-api.pdb
+D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\Business.dll
+D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\RepositoryADO.dll
+D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\Business.pdb
+D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\RepositoryADO.pdb
