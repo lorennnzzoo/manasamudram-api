@@ -10,19 +10,20 @@ using RepositoryADO;
 
 namespace manasamudram_api.Controllers
 {
+    [RoutePrefix("api/household")]
     public class HouseHoldController : ApiController
     {
 
-        
+        HouseHoldOperations hop = new HouseHoldOperations();
 
         [HttpGet]
-        [Route("api/householders")] 
+        [Route("gethouseholders")] 
         public IHttpActionResult GetHouseHolders()
         {
             List<Householderviewmodel> resultList = new List<Householderviewmodel>();
             try
             {
-                HouseHoldOperations hop = new HouseHoldOperations();
+                
                 resultList=hop.GetAllHouseHolders();
 
                 return Ok(resultList);
@@ -30,6 +31,38 @@ namespace manasamudram_api.Controllers
             catch (Exception ex)
             {
               
+                return InternalServerError(ex);
+            }
+        }
+
+
+
+        [HttpPost]
+        [Route("generateqr")]
+        public IHttpActionResult GenerateQR(HouseHold model)
+        {
+            try
+            {
+                
+                if (ModelState.IsValid)
+                {
+                    if(hop.GenerateQRs(model))
+                    {
+                        return Ok("QR code and household data generated successfully");
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                    
+                }
+
+                
+                return BadRequest(ModelState);
+            }
+            catch (Exception ex)
+            {
+                
                 return InternalServerError(ex);
             }
         }

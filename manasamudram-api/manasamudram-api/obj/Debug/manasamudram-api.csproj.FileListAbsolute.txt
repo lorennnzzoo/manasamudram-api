@@ -94,3 +94,4 @@ D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\Business.dll
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\RepositoryADO.dll
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\Business.pdb
 D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\RepositoryADO.pdb
+D:\dharma\manasamudram-api\manasamudram-api\manasamudram-api\bin\QRCoder.dll

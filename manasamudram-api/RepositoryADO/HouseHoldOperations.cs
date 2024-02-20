@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using QRCoder;
+using System.IO;
+using System.Drawing;
 
 namespace RepositoryADO
 {
     public class HouseHoldOperations
     {
+        private ManasamudramEntities context = new ManasamudramEntities();
         public string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ManasamudramString"].ToString();
         public  List<Householderviewmodel> GetAllHouseHolders()
         {
@@ -46,6 +50,61 @@ namespace RepositoryADO
             }
             return resultList;
         }
-            
+
+        public bool GenerateQRs(HouseHold model)
+        {
+            try
+            {
+                Guid id = Guid.NewGuid();
+                string qrUrl = id.ToString();
+
+
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrUrl, QRCodeGenerator.ECCLevel.Q);
+                QRCode qrCode = new QRCode(qrCodeData);
+                Bitmap qrCodeImage = qrCode.GetGraphic(10);
+
+
+                byte[] qrCodeBytes;
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    qrCodeImage.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                    qrCodeBytes = stream.ToArray();
+                }
+
+
+                QR qrModel = new QR
+                {
+                    UniqueID = id,
+                    QRData = qrCodeBytes
+                };
+
+                context.QRs.Add(qrModel);
+                context.SaveChanges();
+
+
+                HouseHold householdModel = new HouseHold
+                {
+                    QRUniqueID = qrModel.UniqueID,
+                    Name = model.Name,
+                    PhoneNumber = model.PhoneNumber,
+                    State = "Andhra Pradesh",
+                    District = "Chittoor",
+                    NumberOfPersons = model.NumberOfPersons,
+                    DOORNo=model.DOORNo
+                };
+
+                context.HouseHolds.Add(householdModel);
+                context.SaveChanges();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
     }
 }
