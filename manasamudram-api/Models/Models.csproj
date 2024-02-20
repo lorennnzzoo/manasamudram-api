@@ -57,6 +57,7 @@
     <Compile Include="HouseHold.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Householderviewmodel.cs" />
     <Compile Include="ManasamudramDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
