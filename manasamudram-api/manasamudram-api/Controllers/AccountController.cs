@@ -8,13 +8,14 @@ using Models;
 
 namespace manasamudram_api.Controllers
 {
+    [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
 
         private ManasamudramEntities dbContext = new ManasamudramEntities(); 
 
         [HttpPost]
-        [Route("api/register")]
+        [Route("register")]
         public IHttpActionResult Register(App_Users newUser)
         {
             try
@@ -40,7 +41,7 @@ namespace manasamudram_api.Controllers
         }
 
         [HttpPost]
-        [Route("api/login")]
+        [Route("login")]
         public IHttpActionResult Login(App_Users loginUser)
         {
             try
