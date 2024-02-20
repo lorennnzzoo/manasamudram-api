@@ -26,5 +26,10 @@ namespace RepositoryADO
             }
 
         }
+
+        public bool AuthenticateUser( string username, string password)
+        {
+            return dbContext.App_Users.Any(u => u.UserName == username && u.Password == password);
+        }
     }
 }

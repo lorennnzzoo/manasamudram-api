@@ -13,8 +13,8 @@ namespace manasamudram_api.Controllers
     public class AccountController : ApiController
     {
 
-        private ManasamudramEntities dbContext = new ManasamudramEntities(); 
-
+        private ManasamudramEntities dbContext = new ManasamudramEntities();
+        UserAccountOperations ua = new UserAccountOperations();
         [HttpPost]
         [Route("register")]
         public IHttpActionResult Register(App_Users newUser)
@@ -25,7 +25,7 @@ namespace manasamudram_api.Controllers
                     return BadRequest("Invalid data");
 
 
-                UserAccountOperations ua= new UserAccountOperations();
+                
                 if (ua.UserExists(newUser))
                     return Conflict();
 
@@ -52,13 +52,10 @@ namespace manasamudram_api.Controllers
                     return BadRequest("Invalid data");
 
                 
-                var user = dbContext.App_Users.FirstOrDefault(u => u.UserName == loginUser.UserName && u.Password == loginUser.Password);
-
-               
-                if (user != null)
+                if (ua.AuthenticateUser(loginUser.UserName, loginUser.Password))
                     return Ok("Login successful");
                 else
-                    return Unauthorized(); 
+                    return Unauthorized();
             }
             catch (Exception ex)
             {
