@@ -54,6 +54,7 @@
     <Compile Include="App_Users.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DashBoard.cs" />
     <Compile Include="HouseHold.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
