@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HouseHoldTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="App_Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HouseHold">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QRUniqueID" Type="Guid" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="District" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfPersons" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DOORNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MicRecording">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="DateTimeRecorded" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+    <Property Name="RecordedData" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="LengthOfAudio" Type="Int32" />
+    <NavigationProperty Name="VehiclesForMic" Relationship="Self.FK__MicRecord__Vehic__1ED998B2" FromRole="MicRecording" ToRole="VehiclesForMic" />
+  </EntityType>
+  <EntityType Name="QR">
+    <Key>
+      <PropertyRef Name="UniqueID" />
+    </Key>
+    <Property Name="UniqueID" Type="Guid" Nullable="false" />
+    <Property Name="QRData" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TotalDryWastage">
+    <Key>
+      <PropertyRef Name="DryWastageId" />
+    </Key>
+    <Property Name="DryWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="DryWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteReceived" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteProcessed" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TotalHHwastage">
+    <Key>
+      <PropertyRef Name="HHWastageId" />
+    </Key>
+    <Property Name="HHWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="HHWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalHHHSafelyDisposed" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TotalMixedWastage">
+    <Key>
+      <PropertyRef Name="MixedWastageId" />
+    </Key>
+    <Property Name="MixedWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="MixedWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalMixedWasteDisposed" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="MixedWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TotalWetWastage">
+    <Key>
+      <PropertyRef Name="WetWastageId" />
+    </Key>
+    <Property Name="WetWastageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="3" />
+    <Property Name="WetWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteReceived" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteProcessed" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteRecovery" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VehiclesForMic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="VehicleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MicRecordings" Relationship="Self.FK__MicRecord__Vehic__1ED998B2" FromRole="VehiclesForMic" ToRole="MicRecording" />
+  </EntityType>
+  <EntityType Name="WastageConfirmation">
+    <Key>
+      <PropertyRef Name="WastageConfirmationId" />
+    </Key>
+    <Property Name="WastageConfirmationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DriverName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HouseId" Type="Int32" />
+    <Property Name="ServiceGiven" Type="Boolean" />
+    <Property Name="IsScannestatus" Type="Boolean" />
+    <Property Name="Trip" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WastageInfo">
+    <Key>
+      <PropertyRef Name="wastageid" />
+    </Key>
+    <Property Name="wastageid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WetWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="HHWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="MixedWasteCollected" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DateTimeWasteLogged" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Trip">
+    <Key>
+      <PropertyRef Name="NoOfTrips" />
+    </Key>
+    <Property Name="DateandTime" Type="DateTime" Precision="0" />
+    <Property Name="NoOfTrips" Type="Int32" Nullable="false" />
+    <Property Name="VehicleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoofWorkers" Type="Int32" />
+    <Property Name="DriveName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountTrueOrFalse" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK__MicRecord__Vehic__1ED998B2">
+    <End Role="VehiclesForMic" Type="Self.VehiclesForMic" Multiplicity="0..1" />
+    <End Role="MicRecording" Type="Self.MicRecording" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehiclesForMic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MicRecording">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ManasamudramEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="App_Users" EntityType="Self.App_Users" />
+    <EntitySet Name="HouseHolds" EntityType="Self.HouseHold" />
+    <EntitySet Name="MicRecordings" EntityType="Self.MicRecording" />
+    <EntitySet Name="QRs" EntityType="Self.QR" />
+    <EntitySet Name="TotalDryWastages" EntityType="Self.TotalDryWastage" />
+    <EntitySet Name="TotalHHwastages" EntityType="Self.TotalHHwastage" />
+    <EntitySet Name="TotalMixedWastages" EntityType="Self.TotalMixedWastage" />
+    <EntitySet Name="TotalWetWastages" EntityType="Self.TotalWetWastage" />
+    <EntitySet Name="VehiclesForMics" EntityType="Self.VehiclesForMic" />
+    <EntitySet Name="WastageConfirmations" EntityType="Self.WastageConfirmation" />
+    <EntitySet Name="WastageInfoes" EntityType="Self.WastageInfo" />
+    <EntitySet Name="Trips" EntityType="Self.Trip" />
+    <AssociationSet Name="FK__MicRecord__Vehic__1ED998B2" Association="Self.FK__MicRecord__Vehic__1ED998B2">
+      <End Role="VehiclesForMic" EntitySet="VehiclesForMics" />
+      <End Role="MicRecording" EntitySet="MicRecordings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
