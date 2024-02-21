@@ -7,6 +7,17 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    public class WasteConfirm
+    {
+        public string DriverName { get; set; }
+
+        public Nullable<int> HouseId { get; set; }
+        public System.DateTime Datetime { get; set; }
+        public Nullable<bool> ServiceGiven { get; set; }
+        public Nullable<int> Trip { get; set; }
+
+
+    }
     public class TotalMixedWastageConfirm
     {
         public int TotalWastageId { get; set; }

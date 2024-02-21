@@ -237,6 +237,7 @@
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\HouseHoldController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\ScanController.cs" />
     <Compile Include="Controllers\TripController.cs" />
     <Compile Include="Controllers\WastageController.cs" />
     <Compile Include="Global.asax.cs">

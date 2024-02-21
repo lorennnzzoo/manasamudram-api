@@ -134,5 +134,38 @@ namespace RepositoryADO
             }
         }
 
+        public void TripData (tripdata WI)
+        {
+            DateTime currentDate = DateTime.Today;
+            WastageInfo W = new WastageInfo
+            {
+                DateTimeWasteLogged = DateTime.Now,
+                WetWasteCollected = WI.WetWasteCollected,
+                DryWasteCollected = WI.DryWasteCollected,
+                HHWasteCollected = WI.HHWasteCollected,
+                MixedWasteCollected = WI.MixedWasteCollected,
+                DriverName = WI.DriverName,
+            };
+
+            context.WastageInfoes.Add(W);
+            context.SaveChanges();
+
+            string query2 = "DELETE FROM Endscanning WHERE StartScanning = '1' AND Endscanning = '1' AND DriveName = @DriverName AND Date = @CurrentDate";
+
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand command = new SqlCommand(query2, connection))
+                {
+                    command.Parameters.AddWithValue("@DriverName", WI.DriverName);
+                    command.Parameters.AddWithValue("@CurrentDate", currentDate.ToString("yyyy-MM-dd"));
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+
+
+        }
+
     }
 }

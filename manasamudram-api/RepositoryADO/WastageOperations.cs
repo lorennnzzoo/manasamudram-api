@@ -426,5 +426,56 @@ namespace RepositoryADO
                 return false;
             }
         }
+
+
+        public HouseHold WastageConfirmation(Guid id)
+        {
+            SqlConnection con = new SqlConnection(connectionstring);
+            con.Open();
+            HouseHold hh = null;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM HouseHold WHERE QRUniqueID='" + id + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                hh = new HouseHold
+                {
+                    ID = Convert.ToInt32(reader["ID"]),
+                    Name = Convert.ToString(reader["Name"]),
+                    PhoneNumber = Convert.ToString(reader["PhoneNumber"]),
+                    State = Convert.ToString(reader["State"]),
+                    District = Convert.ToString(reader["District"]),
+                    DOORNo = Convert.ToString(reader["DOORNo"]),
+                    NumberOfPersons = Convert.ToString(reader["NumberOfPersons"])
+                };
+            }
+            con.Close();
+
+            if (hh != null)
+            {
+                return hh;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public int WastageConfirmation(WasteConfirm WC)
+        {
+            WastageConfirmation WCC = new WastageConfirmation
+            {
+                Datetime = WC.Datetime,
+                HouseId = WC.HouseId,
+                ServiceGiven = WC.ServiceGiven,
+                DriverName = WC.DriverName,
+                IsScannestatus = true,
+                Trip = WC.Trip
+            };
+
+            context.WastageConfirmations.Add(WCC);
+            int rowsefected=context.SaveChanges();
+
+            return rowsefected;
+        }
     }
 }

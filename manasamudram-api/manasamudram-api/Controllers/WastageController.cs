@@ -200,5 +200,52 @@ namespace manasamudram_api.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+
+        [HttpGet]
+        [Route("WastageConfirmation/{id}")]
+        public IHttpActionResult WastageConfirmation(Guid id)
+        {
+            try
+            {
+                HouseHold hh = wop.WastageConfirmation(id);
+                if(hh != null)
+                {
+                    return Ok(hh);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {                
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [HttpPost]
+        [Route("InsertConfirmation")]
+        public IHttpActionResult InsertConfirmation(WasteConfirm WC)
+        {
+            try
+            {
+                int re = wop.WastageConfirmation(WC);
+                if(re>0)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (log, show an error message, etc.)
+                return InternalServerError(ex);
+            }
+        }
     }
 }
