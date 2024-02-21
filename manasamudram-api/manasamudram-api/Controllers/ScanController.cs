@@ -18,11 +18,11 @@ namespace manasamudram_api.Controllers
         {
             try
             {
-                string result = sop.InsertEndScan(driverName, tripNo);
-                
-                if (result.StartsWith("Success"))
+                var resultDict = sop.InsertEndScan(driverName, tripNo);
+
+                if (resultDict.ContainsKey("success") && resultDict["success"] == "true")
                 {
-                    return Ok(new { success = true, message = result });
+                    return Ok(resultDict);
                 }
                 else
                 {

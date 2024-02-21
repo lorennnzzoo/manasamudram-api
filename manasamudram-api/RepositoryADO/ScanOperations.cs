@@ -13,9 +13,10 @@ namespace RepositoryADO
         private ManasamudramEntities context = new ManasamudramEntities();
         public string connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["ManasamudramString"].ToString();
 
-        public string InsertEndScan(string driverName, string tripNo)
+        public Dictionary<string, string> InsertEndScan(string driverName, string tripNo)
         {
             DateTime currentDate = DateTime.Today;
+            Dictionary<string, string> result = new Dictionary<string, string>();
 
             string queryCount = "SELECT COUNT(ServiceGiven) FROM WastageConfirmation WHERE Drivername = @DriverName AND CAST(Datetime AS DATE) = @CurrentDate AND IsScannestatus = 1 AND Trip = '" + tripNo + "'";
             string queryUpdate = "UPDATE EndScanning SET Endscanning = 1 WHERE DriveName = @DriverName AND Date = @CurrentDate AND Startscanning = 1 ";
@@ -34,12 +35,17 @@ namespace RepositoryADO
 
                         if (rowCount == 0)
                         {
-                            return "Success: No records found in WastageConfirmation";
+                            result.Add("success", "true");
+                            result.Add("rowCount", rowCount.ToString());
+                            result.Add("error", "No records found in WastageConfirmation");
+                            return result;
                         }
                     }
                     catch (Exception ex)
                     {
-                        return "Error: Exception during count query: " + ex.Message;
+                        result.Add("success", "false");
+                        result.Add("error", "Exception during count query: " + ex.Message);
+                        return result;
                     }
                 }
 
@@ -54,21 +60,26 @@ namespace RepositoryADO
 
                         if (rowsAffected > 0)
                         {
-                            return "Success: Rows affected - " + rowsAffected;
+                            result.Add("success", "true");
+                            result.Add("rowsAffected", rowsAffected.ToString());
+                            return result;
                         }
                         else
                         {
-                            return "Error: Failed to update data";
+                            result.Add("success", "false");
+                            result.Add("error", "Failed to update data");
+                            return result;
                         }
                     }
                     catch (Exception ex)
                     {
-                        return "Error: Exception during update query: " + ex.Message;
+                        result.Add("success", "false");
+                        result.Add("error", "Exception during update query: " + ex.Message);
+                        return result;
                     }
                 }
             }
         }
-
         public Dictionary<string, string> CTStatusChecking(string driverName)
         {
             DateTime currentDate = DateTime.Today;

@@ -81,6 +81,7 @@
     <Compile Include="QR.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Records.cs" />
     <Compile Include="TotalDryWastage.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
