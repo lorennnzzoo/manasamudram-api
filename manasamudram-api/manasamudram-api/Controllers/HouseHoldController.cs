@@ -66,5 +66,72 @@ namespace manasamudram_api.Controllers
                 return InternalServerError(ex);
             }
         }
+
+
+        [HttpGet]
+        [Route("getwetwastecollected")]
+        public IHttpActionResult GetWetWasteCollected()
+        {
+            try
+            {
+                TotalWetWastageConfirm TW = hop.GetWetWasteCollected();
+                return Ok(TW);
+            }
+            catch (Exception ex)
+            {                
+                return InternalServerError(ex);
+            }
+        }
+
+
+
+
+        [HttpGet]
+        [Route("getdrywastecollected")]
+        public IHttpActionResult GetDryWasteCollected()
+        {
+            try
+            {
+                TotalDryWastageConfirm TW = hop.GetDryWasteCollected();
+                return Ok(TW);
+            }
+            catch (Exception ex)
+            {                
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("gethhwastecollected")]
+        public IHttpActionResult GetHHWasteCollected()
+        {
+            try
+            {
+                TotalHHWastageConfirm TW = hop.GetHHWasteCollected();
+                return Ok(TW);
+            }
+            catch (Exception ex)
+            {
+                
+                return InternalServerError(ex);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("getmixedwastecollected")]
+        public IHttpActionResult GetMixedWasteCollected()
+        {
+            try
+            {
+                TotalMixedWastageConfirm TW = hop.GetMixedWasteCollected();
+                return Ok(TW);
+            }
+            catch (Exception ex)
+            {               
+                return InternalServerError(ex);
+            }
+        }
     }
 }

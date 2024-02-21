@@ -99,6 +99,7 @@
     <Compile Include="VehiclesForMic.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="wastageconfirm.cs" />
     <Compile Include="WastageConfirmation.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
