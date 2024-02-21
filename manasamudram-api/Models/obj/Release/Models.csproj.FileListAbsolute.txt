@@ -1,0 +1,10 @@
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\Models.dll.config
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\Models.dll
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\Models.pdb
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\EntityFramework.dll
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\EntityFramework.SqlServer.dll
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\EntityFramework.xml
+D:\dharma\manasamudram-api\manasamudram-api\Models\bin\Release\EntityFramework.SqlServer.xml
+D:\dharma\manasamudram-api\manasamudram-api\Models\obj\Release\Models.csprojResolveAssemblyReference.cache
+D:\dharma\manasamudram-api\manasamudram-api\Models\obj\Release\Models.dll
+D:\dharma\manasamudram-api\manasamudram-api\Models\obj\Release\Models.pdb

@@ -1,0 +1,13 @@
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\RepositoryADO.dll.config
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\RepositoryADO.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\RepositoryADO.pdb
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\EntityFramework.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\EntityFramework.SqlServer.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\Models.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\QRCoder.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\Models.pdb
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\EntityFramework.xml
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\bin\Release\EntityFramework.SqlServer.xml
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Release\RepositoryADO.csprojResolveAssemblyReference.cache
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Release\RepositoryADO.dll
+D:\dharma\manasamudram-api\manasamudram-api\RepositoryADO\obj\Release\RepositoryADO.pdb

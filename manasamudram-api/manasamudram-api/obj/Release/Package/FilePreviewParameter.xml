@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/nkssapi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\dharma\\manasamudram-api\\manasamudram-api\\manasamudram-api\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\dharma\\manasamudram-api\\manasamudram-api\\manasamudram-api\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-manasamudram-api-20240220032213.mdf;Initial Catalog=aspnet-manasamudram-api-20240220032213;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\dharma\\manasamudram-api\\manasamudram-api\\manasamudram-api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="ManasamudramEntities-Web.config Connection String" description="" value="metadata=res://*/ManasamudramDataModel.csdl|res://*/ManasamudramDataModel.ssdl|res://*/ManasamudramDataModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=BHANU;initial catalog=HouseHoldTest;persist security info=True;user id=sa;password=nkss@123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\dharma\\manasamudram-api\\manasamudram-api\\manasamudram-api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ManasamudramEntities']/@connectionString" />
+  </parameter>
+  <parameter name="ManasamudramString-Web.config Connection String" description="" value="Data Source=BHANU;Initial Catalog=HouseHoldTest;Persist Security Info=True;User ID=sa;Password=nkss@123;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\dharma\\manasamudram-api\\manasamudram-api\\manasamudram-api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ManasamudramString']/@connectionString" />
+  </parameter>
+</parameters>
