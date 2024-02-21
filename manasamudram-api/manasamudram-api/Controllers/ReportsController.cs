@@ -6,9 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Models;
+using System.Web.Http.Cors;
 
 namespace manasamudram_api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Reports")]
     public class ReportsController : ApiController
     {

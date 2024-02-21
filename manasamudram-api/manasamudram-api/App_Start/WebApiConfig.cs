@@ -16,7 +16,8 @@ namespace manasamudram_api
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            config.EnableCors();
+            config.MapHttpAttributeRoutes();
             // Web API routes
             config.MapHttpAttributeRoutes();
 

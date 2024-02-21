@@ -6,9 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using Models;
 using RepositoryADO;
+using System.Web.Http.Cors;
 
 namespace manasamudram_api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
     {
