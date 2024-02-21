@@ -14,7 +14,7 @@ namespace manasamudram_api.Controllers
     {
         ReportsOperations Rop = new ReportsOperations();
         [HttpPost]
-        [Route("api/Reports")]
+        [Route("GetReports")]
         public IHttpActionResult PostReports(GetReportViewModel GRVM)
         {            
             try
