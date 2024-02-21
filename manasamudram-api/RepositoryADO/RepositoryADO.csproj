@@ -65,6 +65,7 @@
     <Compile Include="HouseHoldOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAccountOperations.cs" />
+    <Compile Include="WastageOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
