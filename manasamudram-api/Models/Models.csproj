@@ -82,6 +82,7 @@
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Records.cs" />
+    <Compile Include="Reports.cs" />
     <Compile Include="TotalDryWastage.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
