@@ -34,5 +34,40 @@ namespace manasamudram_api.Controllers
                 return InternalServerError(ex);
             }
         }
+
+
+        [HttpGet]
+        [Route("GetTripCount")]
+        public IHttpActionResult GetTripCount()
+        {
+            try
+            {
+                int tripcount = Top.GetTripCount();
+                return Ok(tripcount);
+            }
+            catch (Exception ex)
+            {                
+                return InternalServerError(ex);
+            }
+        }
+
+
+
+        [HttpPost]
+        [Route("UpdateTrip")]
+        public IHttpActionResult UpdateTrip(string TripCount, string VehicleNumber, int NoofWorkers, string driverName)
+        {
+            try
+            {
+                Top.UpdateTripDetails(TripCount, VehicleNumber, NoofWorkers, driverName);
+                return Ok(new { success = true, message = "SUCCESS" });
+            }
+            catch (Exception ex)
+            {                
+                return InternalServerError(ex);
+            }
+        }
+
+
     }
 }
