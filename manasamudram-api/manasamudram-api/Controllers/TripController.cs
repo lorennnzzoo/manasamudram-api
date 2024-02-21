@@ -1,4 +1,5 @@
-﻿using RepositoryADO;
+﻿using Models;
+using RepositoryADO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,6 +69,55 @@ namespace manasamudram_api.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("TripData")]
+        public IHttpActionResult TripData(tripdata WI)
+        {
+            DateTime currentDate = DateTime.Today;
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    WastageInfo W = new WastageInfo
+                    {
+                        DateTimeWasteLogged = DateTime.Now,
+                        WetWasteCollected = WI.WetWasteCollected,
+                        DryWasteCollected = WI.DryWasteCollected,
+                        HHWasteCollected = WI.HHWasteCollected,
+                        MixedWasteCollected = WI.MixedWasteCollected,
+                        DriverName = WI.DriverName,
+                    };
+
+                    hh.WastageInfoes.Add(W);
+                    hh.SaveChanges();
+
+                    string query2 = "DELETE FROM Endscanning WHERE StartScanning = '1' AND Endscanning = '1' AND DriveName = @DriverName AND Date = @CurrentDate";
+
+                    using (SqlConnection connection = new SqlConnection(connectionstring))
+                    {
+                        using (SqlCommand command = new SqlCommand(query2, connection))
+                        {
+                            command.Parameters.AddWithValue("@DriverName", WI.DriverName);
+                            command.Parameters.AddWithValue("@CurrentDate", currentDate.ToString("yyyy-MM-dd"));
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    
+                    return Ok(new { success = true, message = "Data saved successfully." });
+                }
+                catch (Exception ex)
+                {
+                    
+                    return InternalServerError(ex);
+                }
+            }
+
+            
+            return BadRequest(ModelState);
+        }
     }
 }

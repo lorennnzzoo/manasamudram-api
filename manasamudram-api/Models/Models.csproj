@@ -96,6 +96,7 @@
     <Compile Include="Trip.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TripsModel.cs" />
     <Compile Include="VehiclesForMic.cs">
       <DependentUpon>ManasamudramDataModel.tt</DependentUpon>
     </Compile>
