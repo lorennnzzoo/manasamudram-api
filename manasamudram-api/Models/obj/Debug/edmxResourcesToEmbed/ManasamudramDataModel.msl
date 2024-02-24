@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HouseHoldTestModelStoreContainer" CdmEntityContainer="ManasamudramEntities">
+    <EntitySetMapping Name="App_Users">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.App_Users">
+        <MappingFragment StoreEntitySet="App_Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouseHolds">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.HouseHold">
+        <MappingFragment StoreEntitySet="HouseHold">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QRUniqueID" ColumnName="QRUniqueID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="NumberOfPersons" ColumnName="NumberOfPersons" />
+          <ScalarProperty Name="DOORNo" ColumnName="DOORNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MicRecordings">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.MicRecording">
+        <MappingFragment StoreEntitySet="MicRecording">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="DateTimeRecorded" ColumnName="DateTimeRecorded" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="RecordedData" ColumnName="RecordedData" />
+          <ScalarProperty Name="LengthOfAudio" ColumnName="LengthOfAudio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QRs">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.QR">
+        <MappingFragment StoreEntitySet="QR">
+          <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+          <ScalarProperty Name="QRData" ColumnName="QRData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TotalDryWastages">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.TotalDryWastage">
+        <MappingFragment StoreEntitySet="TotalDryWastage">
+          <ScalarProperty Name="DryWastageId" ColumnName="DryWastageId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="DryWasteCollected" ColumnName="DryWasteCollected" />
+          <ScalarProperty Name="DryWasteReceived" ColumnName="DryWasteReceived" />
+          <ScalarProperty Name="DryWasteProcessed" ColumnName="DryWasteProcessed" />
+          <ScalarProperty Name="DryWasteRecovery" ColumnName="DryWasteRecovery" />
+          <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TotalHHwastages">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.TotalHHwastage">
+        <MappingFragment StoreEntitySet="TotalHHwastage">
+          <ScalarProperty Name="HHWastageId" ColumnName="HHWastageId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="HHWasteCollected" ColumnName="HHWasteCollected" />
+          <ScalarProperty Name="TotalHHHSafelyDisposed" ColumnName="TotalHHHSafelyDisposed" />
+          <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TotalMixedWastages">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.TotalMixedWastage">
+        <MappingFragment StoreEntitySet="TotalMixedWastage">
+          <ScalarProperty Name="MixedWastageId" ColumnName="MixedWastageId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="MixedWasteCollected" ColumnName="MixedWasteCollected" />
+          <ScalarProperty Name="TotalMixedWasteDisposed" ColumnName="TotalMixedWasteDisposed" />
+          <ScalarProperty Name="MixedWasteRecovery" ColumnName="MixedWasteRecovery" />
+          <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TotalWetWastages">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.TotalWetWastage">
+        <MappingFragment StoreEntitySet="TotalWetWastage">
+          <ScalarProperty Name="WetWastageId" ColumnName="WetWastageId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="WetWasteCollected" ColumnName="WetWasteCollected" />
+          <ScalarProperty Name="WetWasteReceived" ColumnName="WetWasteReceived" />
+          <ScalarProperty Name="WetWasteProcessed" ColumnName="WetWasteProcessed" />
+          <ScalarProperty Name="WetWasteRecovery" ColumnName="WetWasteRecovery" />
+          <ScalarProperty Name="HousesCollected" ColumnName="HousesCollected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VehiclesForMics">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.VehiclesForMic">
+        <MappingFragment StoreEntitySet="VehiclesForMic">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WastageConfirmations">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.WastageConfirmation">
+        <MappingFragment StoreEntitySet="WastageConfirmation">
+          <ScalarProperty Name="WastageConfirmationId" ColumnName="WastageConfirmationId" />
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+          <ScalarProperty Name="ServiceGiven" ColumnName="ServiceGiven" />
+          <ScalarProperty Name="IsScannestatus" ColumnName="IsScannestatus" />
+          <ScalarProperty Name="Trip" ColumnName="Trip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WastageInfoes">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.WastageInfo">
+        <MappingFragment StoreEntitySet="WastageInfo">
+          <ScalarProperty Name="wastageid" ColumnName="wastageid" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="WetWasteCollected" ColumnName="WetWasteCollected" />
+          <ScalarProperty Name="DryWasteCollected" ColumnName="DryWasteCollected" />
+          <ScalarProperty Name="HHWasteCollected" ColumnName="HHWasteCollected" />
+          <ScalarProperty Name="MixedWasteCollected" ColumnName="MixedWasteCollected" />
+          <ScalarProperty Name="DateTimeWasteLogged" ColumnName="DateTimeWasteLogged" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trips">
+      <EntityTypeMapping TypeName="HouseHoldTestModel.Trip">
+        <MappingFragment StoreEntitySet="Trips">
+          <ScalarProperty Name="DateandTime" ColumnName="DateandTime" />
+          <ScalarProperty Name="NoOfTrips" ColumnName="NoOfTrips" />
+          <ScalarProperty Name="VehicleNumber" ColumnName="VehicleNumber" />
+          <ScalarProperty Name="NoofWorkers" ColumnName="NoofWorkers" />
+          <ScalarProperty Name="DriveName" ColumnName="DriveName" />
+          <ScalarProperty Name="CountTrueOrFalse" ColumnName="CountTrueOrFalse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
