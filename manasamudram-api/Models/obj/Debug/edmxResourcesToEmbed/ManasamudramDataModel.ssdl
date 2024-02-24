@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HouseHoldTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="App_Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="DriverName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HouseHoldTest.dbo.EndScanning' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EndScanning">
+          <Property Name="StartScanning" Type="bit" />
+          <Property Name="Endscanning" Type="bit" />
+          <Property Name="DriveName" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Tripcount" Type="int" />
+        </EntityType>-->
+  <EntityType Name="HouseHold">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QRUniqueID" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="District" Type="nvarchar(max)" />
+    <Property Name="NumberOfPersons" Type="nvarchar(max)" />
+    <Property Name="DOORNo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MicRecording">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleId" Type="int" />
+    <Property Name="DateTimeRecorded" Type="datetime" Nullable="false" />
+    <Property Name="IsRead" Type="bit" Nullable="false" />
+    <Property Name="RecordedData" Type="varbinary(max)" />
+    <Property Name="LengthOfAudio" Type="int" />
+  </EntityType>
+  <EntityType Name="QR">
+    <Key>
+      <PropertyRef Name="UniqueID" />
+    </Key>
+    <Property Name="UniqueID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QRData" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HouseHoldTest.dbo.Startsacnning' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Startsacnning">
+          <Property Name="Startscanning" Type="bit" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Drivename" Type="nvarchar(max)" />
+        </EntityType>-->
+  <EntityType Name="TotalDryWastage">
+    <Key>
+      <PropertyRef Name="DryWastageId" />
+    </Key>
+    <Property Name="DryWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="DryWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteReceived" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteProcessed" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="int" />
+  </EntityType>
+  <EntityType Name="TotalHHwastage">
+    <Key>
+      <PropertyRef Name="HHWastageId" />
+    </Key>
+    <Property Name="HHWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="HHWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="TotalHHHSafelyDisposed" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="int" />
+  </EntityType>
+  <EntityType Name="TotalMixedWastage">
+    <Key>
+      <PropertyRef Name="MixedWastageId" />
+    </Key>
+    <Property Name="MixedWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="MixedWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="TotalMixedWasteDisposed" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MixedWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="int" />
+  </EntityType>
+  <EntityType Name="TotalWetWastage">
+    <Key>
+      <PropertyRef Name="WetWastageId" />
+    </Key>
+    <Property Name="WetWastageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" />
+    <Property Name="WetWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteReceived" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteProcessed" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="WetWasteRecovery" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HousesCollected" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HouseHoldTest.dbo.Trips' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Trips">
+    <Key>
+      <PropertyRef Name="NoOfTrips" />
+    </Key>
+    <Property Name="DateandTime" Type="date" />
+    <Property Name="NoOfTrips" Type="int" Nullable="false" />
+    <Property Name="VehicleNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="NoofWorkers" Type="int" />
+    <Property Name="DriveName" Type="nvarchar(max)" />
+    <Property Name="CountTrueOrFalse" Type="bit" />
+  </EntityType>
+  <EntityType Name="VehiclesForMic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="VehicleName" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WastageConfirmation">
+    <Key>
+      <PropertyRef Name="WastageConfirmationId" />
+    </Key>
+    <Property Name="WastageConfirmationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" Nullable="false" />
+    <Property Name="DriverName" Type="nvarchar(max)" />
+    <Property Name="HouseId" Type="int" />
+    <Property Name="ServiceGiven" Type="bit" />
+    <Property Name="IsScannestatus" Type="bit" />
+    <Property Name="Trip" Type="int" />
+  </EntityType>
+  <EntityType Name="WastageInfo">
+    <Key>
+      <PropertyRef Name="wastageid" />
+    </Key>
+    <Property Name="wastageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverName" Type="nvarchar(max)" />
+    <Property Name="WetWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DryWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="HHWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MixedWasteCollected" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="DateTimeWasteLogged" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__MicRecord__Vehic__1ED998B2">
+    <End Role="VehiclesForMic" Type="Self.VehiclesForMic" Multiplicity="0..1" />
+    <End Role="MicRecording" Type="Self.MicRecording" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehiclesForMic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MicRecording">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HouseHoldTestModelStoreContainer">
+    <EntitySet Name="App_Users" EntityType="Self.App_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouseHold" EntityType="Self.HouseHold" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MicRecording" EntityType="Self.MicRecording" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QR" EntityType="Self.QR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TotalDryWastage" EntityType="Self.TotalDryWastage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TotalHHwastage" EntityType="Self.TotalHHwastage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TotalMixedWastage" EntityType="Self.TotalMixedWastage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TotalWetWastage" EntityType="Self.TotalWetWastage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehiclesForMic" EntityType="Self.VehiclesForMic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WastageConfirmation" EntityType="Self.WastageConfirmation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WastageInfo" EntityType="Self.WastageInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trips" EntityType="Self.Trips" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Trips].[DateandTime] AS [DateandTime], 
+    [Trips].[NoOfTrips] AS [NoOfTrips], 
+    [Trips].[VehicleNumber] AS [VehicleNumber], 
+    [Trips].[NoofWorkers] AS [NoofWorkers], 
+    [Trips].[DriveName] AS [DriveName], 
+    [Trips].[CountTrueOrFalse] AS [CountTrueOrFalse]
+    FROM [dbo].[Trips] AS [Trips]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__MicRecord__Vehic__1ED998B2" Association="Self.FK__MicRecord__Vehic__1ED998B2">
+      <End Role="VehiclesForMic" EntitySet="VehiclesForMic" />
+      <End Role="MicRecording" EntitySet="MicRecording" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -16,4 +16,10 @@ namespace Models
 
     }
 
+    public class AudioDataModel
+    {
+        public byte[] Audio { get; set; }
+        public string Duration { get; set; }
+    }
+
 }
